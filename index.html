@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Lost & Found</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            /*  UNIVERSITY BACKGROUND IMAGE */
+            background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Overlay to make text readable on top of the picture */
+        .bg-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.4));
+            min-height: 100vh;
+        }
+
+        /* GLASSMORPHISM EFFECT  */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Card Hover Effect */
+        .item-card {
+            transition: all 0.3s ease;
+        }
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Smooth Fade In Animation */
+        .fade-in { animation: fadeIn 0.8s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Category Image Styling */
+        .category-img {
+            height: 80px;
+            width: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="bg-overlay"> <nav class="p-6">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="bg-blue-600 text-white p-2 rounded-lg shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-extrabold text-white tracking-tight">LOST <span class="text-blue-400">&</span> FOUND</h1>
+                        <p class="text-xs text-gray-300 tracking-widest uppercase">Campus Portal</p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mx-auto px-4 py-6">
+
+            <div class="fade-in flex justify-center gap-8 mb-10 overflow-x-auto pb-4">
+                <div class="flex flex-col items-center group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=150&q=80" class="category-img group-hover:scale-110 transition">
+                    <span class="text-white text-sm mt-2 font-medium bg-black/50 px-3 py-1 rounded-full">Electronics</span>
+                </div>
+                <div class="flex flex-col items-center group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=150&q=80" class="category-img group-hover:scale-110 transition">
+                    <span class="text-white text-sm mt-2 font-medium bg-black/50 px-3 py-1 rounded-full">Wallet/Money</span>
+                </div>
+                <div class="flex flex-col items-center group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=150&q=80" class="category-img group-hover:scale-110 transition">
+                    <span class="text-white text-sm mt-2 font-medium bg-black/50 px-3 py-1 rounded-full">Bags</span>
+                </div>
+                <div class="flex flex-col items-center group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1584036561566-b452748e431f?auto=format&fit=crop&w=150&q=80" class="category-img group-hover:scale-110 transition">
+                    <span class="text-white text-sm mt-2 font-medium bg-black/50 px-3 py-1 rounded-full">ID Cards</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                
+                <div class="lg:col-span-1">
+                    <div class="glass-panel rounded-2xl p-6 shadow-2xl fade-in sticky top-24">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-1 flex items-center gap-2">
+                            📝 Report Item
+                        </h2>
+                        <p class="text-sm text-gray-500 mb-6">Did you lose or find something today?</p>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-xs font-bold text-gray-500 uppercase">Item Name</label>
+                                <input id="itemTitle" type="text" placeholder="e.g. Black Sony Headphones" 
+                                    class="w-full bg-white/50 border border-gray-200 rounded-xl p-3 mt-1 focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                            </div>
+
+                            <div>
+                                <label class="text-xs font-bold text-gray-500 uppercase">Status</label>
+                                <div class="relative">
+                                    <select id="itemStatus" class="w-full bg-white/50 border border-gray-200 rounded-xl p-3 mt-1 appearance-none focus:ring-2 focus:ring-blue-500 outline-none">
+                                        <option value="lost">🔴 I Lost Something</option>
+                                        <option value="found">🟢 I Found Something</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700 top-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="text-xs font-bold text-gray-500 uppercase">Photo</label>
+                                <label class="flex flex-col items-center justify-center w-full h-24 border-2 border-gray-300 border-dashed rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100 transition mt-1">
+                                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                                        <p class="text-xs text-gray-500 pt-1">Click to upload image</p>
+                                    </div>
+                                    <input id="itemImg" type="file" class="hidden" accept="image/*" />
+                                </label>
+                            </div>
+
+                            <button onclick="uploadItem()" id="submitBtn" 
+                                class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg transform transition active:scale-95">
+                                Submit Report
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <div class="flex justify-between items-end mb-6">
+                        <h2 class="text-2xl font-bold text-white drop-shadow-md">Recent Activity</h2>
+                        <span class="text-white/80 text-sm bg-black/30 px-3 py-1 rounded-full">Live Updates</span>
+                    </div>
+                    
+                    <div id="itemFeed" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="glass-panel p-8 rounded-xl text-center col-span-full">
+                            <p class="text-gray-500 animate-pulse">Connecting to Campus Database...</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+
+    <script>
+      // 1. FIREBASE CONFIG (PASTE YOURS HERE)
+      const firebaseConfig = {
+        apiKey: "AIzaSyDDzzSgS3fPN9xBjfe8U263slPb06Rmce0",
+        authDomain: "lost-found-item-a77e2.firebaseapp.com",
+        projectId: "lost-found-item-a77e2",
+        storageBucket: "lost-found-item-a77e2.firebasestorage.app",
+        messagingSenderId: "11779294488",
+        appId: "1:11779294488:web:410fdca6db43bf368dca6d"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+
+      // 2. DOM ELEMENTS
+      const itemTitleInput = document.getElementById('itemTitle');
+      const itemStatusSelect = document.getElementById('itemStatus');
+      const itemImgInput = document.getElementById('itemImg');
+      const itemFeedDiv = document.getElementById('itemFeed');
+      const submitBtn = document.getElementById('submitBtn');
+
+      // 3. IMAGE COMPRESSION (Base64)
+      const processImage = (file) => {
+          return new Promise((resolve) => {
+              const reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onload = (event) => {
+                  const img = new Image();
+                  img.src = event.target.result;
+                  img.onload = () => {
+                      const canvas = document.createElement('canvas');
+                      const MAX_WIDTH = 600; 
+                      const scaleSize = MAX_WIDTH / img.width;
+                      canvas.width = MAX_WIDTH;
+                      canvas.height = img.height * scaleSize;
+                      const ctx = canvas.getContext('2d');
+                      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                      resolve(canvas.toDataURL('image/jpeg', 0.6)); 
+                  };
+              };
+          });
+      };
+
+      // 4. UPLOAD FUNCTION
+      window.uploadItem = async () => {
+          const title = itemTitleInput.value.trim();
+          const status = itemStatusSelect.value;
+          const file = itemImgInput.files[0];
+
+          if (!title) { alert('Please enter item name!'); return; }
+
+          submitBtn.innerText = "Processing...";
+          submitBtn.disabled = true;
+
+          try {
+              let imageString = null;
+              if (file) imageString = await processImage(file);
+
+              await db.collection('items').add({
+                  title: title,
+                  status: status,
+                  imageUrl: imageString,
+                  timestamp: firebase.firestore.FieldValue.serverTimestamp()
+              });
+
+              itemTitleInput.value = '';
+              itemImgInput.value = ''; // Reset file input
+          } catch (error) {
+              alert("Error: " + error.message);
+          } finally {
+              submitBtn.innerText = "Submit Report";
+              submitBtn.disabled = false;
+          }
+      };
+
+      // 5. DELETE FUNCTION
+      window.deleteItem = async (id) => {
+          if(confirm("Delete this item?")) {
+              await db.collection('items').doc(id).delete();
+          }
+      };
+
+      // 6. LIVE FEED
+      db.collection('items').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
+          let html = '';
+          if (snapshot.empty) {
+              itemFeedDiv.innerHTML = '<div class="glass-panel p-6 rounded-xl text-center col-span-full text-gray-500">No recent activity.</div>';
+              return;
+          }
+          
+          snapshot.forEach(doc => {
+              const data = doc.data();
+              const id = doc.id;
+              const date = data.timestamp ? new Date(data.timestamp.toDate()).toLocaleDateString() : 'Now';
+              
+              // Styling based on status
+              const isLost = data.status === 'lost';
+              const badgeClass = isLost ? 'bg-red-500' : 'bg-green-500';
+              const statusText = isLost ? 'LOST' : 'FOUND';
+
+              // Image Handling
+              const imgHtml = data.imageUrl 
+                  ? `<div class="h-48 w-full bg-cover bg-center" style="background-image: url('${data.imageUrl}')"></div>` 
+                  : `<div class="h-48 w-full bg-gray-100 flex items-center justify-center text-gray-400 flex-col"><svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg><span class="text-xs">No Image</span></div>`;
+
+              html += `
+                  <div class="item-card glass-panel rounded-xl overflow-hidden relative group">
+                      <button onclick="deleteItem('${id}')" class="absolute top-2 right-2 bg-white/80 hover:bg-red-500 hover:text-white p-2 rounded-full shadow-sm z-10 transition opacity-0 group-hover:opacity-100">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                      </button>
+                      
+                      ${imgHtml}
+                      
+                      <div class="p-4">
+                          <div class="flex justify-between items-start mb-2">
+                              <span class="${badgeClass} text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide shadow-sm">${statusText}</span>
+                              <span class="text-xs text-gray-500">${date}</span>
+                          </div>
+                          <h3 class="font-bold text-gray-800 text-lg leading-tight truncate">${data.title}</h3>
+                      </div>
+                  </div>
+              `;
+          });
+          itemFeedDiv.innerHTML = html;
+      });
+    </script>
+</body>
+</html>
